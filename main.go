@@ -8,6 +8,24 @@ var final [][]int
 var size int
 var fps int
 
+func init() {
+	size = 20 // Size of frame
+
+	cells = make([][]int, size)
+	final = make([][]int, size)
+	for i := range cells {
+		cells[i] = make([]int, size)
+		final[i] = make([]int, size)
+	}
+
+	// The Glider Pattern (https://conwaylife.com/wiki/Glider)
+	cells[5][5] = 1
+	cells[5][6] = 1
+	cells[5][4] = 1
+	cells[4][6] = 1
+	cells[3][5] = 1
+}
+
 func main() {
 
 }
