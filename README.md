@@ -41,7 +41,7 @@ This will start the simulation with default settings: a grid size of 20x20, a gl
 
 ### License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/zubairmh/thelifegame/blob/main/LICENSE).
 Acknowledgements
 
 - John Conway for creating the Game of Life and introducing it to the world.
