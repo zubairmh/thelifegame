@@ -31,7 +31,21 @@ func init() {
 	cells[3][5] = 1
 }
 
+func main() {
+	fps = 5 // Rate at which simulation runs
+	EventLoop(fps)
+}
+
 func Tick() {
+	// A Tick is ran once per frame
+
+	// Logic
+	// Check each cell for the following
+	// 1) Any live cell with fewer than two live neighbours dies.
+	// 2) Any live cell with more than three live neighbours dies.
+	// 3) Any live cell with two or three live neighbours lives, unchanged, to the next generation.
+	// 4) Any dead cell with exactly three live neighbours will come to life.
+
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
 
@@ -77,6 +91,8 @@ func Tick() {
 					count++
 				}
 			}
+
+			// Once total neighboring cells are calculated, find cell state
 			if count < 2 && cells[i][j] == 1 {
 				final[i][j] = 0
 			}
@@ -98,6 +114,7 @@ func Tick() {
 	}
 	printCells()
 }
+
 func printCells() {
 	fmt.Print("\n\n\n\n\n") // Some new lines, for rendering next frame
 
@@ -132,9 +149,4 @@ func EventLoop(fps int) {
 	}()
 	for {
 	}
-}
-
-func main() {
-	fps = 5 // Rate at which simulation runs
-	EventLoop(fps)
 }
