@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -95,8 +96,24 @@ func Tick() {
 	for i := range cells {
 		copy(cells[i], final[i])
 	}
+	printCells()
 }
+func printCells() {
+	fmt.Print("\n\n\n\n\n") // Some new lines, for rendering next frame
 
+	// Print the resulting frame
+	for i := 0; i < size; i++ {
+		for j := 0; j < size; j++ {
+			if final[i][j] == 1 {
+				fmt.Print("▓")
+			}
+			if final[i][j] == 0 {
+				fmt.Print("░")
+			}
+		}
+		fmt.Print("\n")
+	}
+}
 func EventLoop(fps int) {
 
 	// Runs an Event Loop that triggers a Tick at the specified fps
