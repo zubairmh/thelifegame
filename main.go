@@ -31,7 +31,70 @@ func init() {
 }
 
 func Tick() {
+	for i := 0; i < size; i++ {
+		for j := 0; j < size; j++ {
 
+			// Count the number of neighboring cells
+			count := 0
+			if i != 0 {
+				if cells[i-1][j] == 1 {
+					count++
+				}
+			}
+			if i != size-1 {
+				if cells[i+1][j] == 1 {
+					count++
+				}
+			}
+			if j != 0 {
+				if cells[i][j-1] == 1 {
+					count++
+				}
+			}
+			if j != size-1 {
+				if cells[i][j+1] == 1 {
+					count++
+				}
+			}
+			if i != 0 && j != 0 {
+				if cells[i-1][j-1] == 1 {
+					count++
+				}
+			}
+			if i != size-1 && j != size-1 {
+				if cells[i+1][j+1] == 1 {
+					count++
+				}
+			}
+			if i != 0 && j != size-1 {
+				if cells[i-1][j+1] == 1 {
+					count++
+				}
+			}
+			if i != size-1 && j != 0 {
+				if cells[i+1][j-1] == 1 {
+					count++
+				}
+			}
+			if count < 2 && cells[i][j] == 1 {
+				final[i][j] = 0
+			}
+			if (count >= 2 && count <= 3) && cells[i][j] == 1 {
+				final[i][j] = 1
+			}
+			if count > 3 && cells[i][j] == 1 {
+				final[i][j] = 0
+			}
+			if count == 3 && cells[i][j] == 0 {
+				final[i][j] = 1
+			}
+		}
+	}
+
+	// Copy the generated frame to current frame for next Tick
+	for i := range cells {
+		copy(cells[i], final[i])
+	}
 }
 
 func EventLoop(fps int) {
@@ -53,6 +116,8 @@ func EventLoop(fps int) {
 	for {
 	}
 }
-func main() {
 
+func main() {
+	fps = 5 // Rate at which simulation runs
+	EventLoop(fps)
 }
