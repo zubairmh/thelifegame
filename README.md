@@ -1,3 +1,5 @@
+![conway](https://i.imgur.com/22BVWt0.gif)
+
 # Conway's Game of Life
 
 This is a simple implementation of Conway's Game of Life written in Go. The Game of Life is a cellular automaton devised by the mathematician John Conway, where cells in a grid evolve based on a set of rules. It is a zero-player game, meaning its evolution is determined by its initial state, requiring no further input.
